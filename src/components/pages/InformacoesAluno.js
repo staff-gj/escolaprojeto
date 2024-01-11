@@ -8,7 +8,7 @@ import { useLocation } from 'react-router'
 export default function InformacoesAluno(props){
 
         const location = useLocation();
-        const aluno = location.state;
+        const alunos = location.state;
 
         console.log(aluno);
 
@@ -23,9 +23,8 @@ export default function InformacoesAluno(props){
     return(
         <div>
             <Paginacao/>   
-            <p>informacoes do aluno: id={aluno_id}</p>
+            <p>informacoes do aluno:</p>
             <div>
-                        <div className='divInformacoes' key={index}>
                             <ul>
                                 <li><strong>Nome do aluno:</strong> {alunos.nome_aluno}</li>
                                 <li><strong>Período:</strong> {alunos.periodo}</li>
