@@ -11,7 +11,7 @@ export default function InformacoesAluno(props){
     const urlParams = new URLSearchParams(window.location.search)
     const aluno_id = urlParams.get("id")
     
-useEffect(() => {
+function exibirdados(){
   if (!aluno_id) return;
 
   function buscarInformacoesAluno() {
@@ -21,7 +21,7 @@ useEffect(() => {
 
     axios.post(url, formData)
       .then(response => {
-        console.log(response.data + 'run');
+        console.log(response.data);
         setAluno(response.data);
       })
       .catch(error => {
@@ -31,6 +31,7 @@ useEffect(() => {
 
   buscarInformacoesAluno();
 }, [aluno_id]);
+    exibirdados()
 
     function boleto(nomeAluno, responsavel) {
         const valorCobrado = prompt("digite o valor cobrado do boleto:")
