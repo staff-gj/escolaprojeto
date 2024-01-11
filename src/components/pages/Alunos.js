@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 export default function Alunos(){
     const [aluno, setAluno] = useState("")
     useEffect(()=>{
-        fetch("http://localhost/escoladb/receber_dados.php")
+        fetch("https://cypriot-overcoat.000webhostapp.com/backend/receber_dados.php")
             .then(response => response.json())
             .then(data =>{
                 setAluno(data)
