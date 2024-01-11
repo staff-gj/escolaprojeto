@@ -7,14 +7,11 @@ import { useLocation } from 'react';
 
 export default function InformacoesAluno(props){
     const [aluno, setAluno] = useState([])
-    const [error, setError] = useState(null);
 
         const location = useLocation();
         const aluno = location.state;
 
         console.log(aluno);
-    
-
 
     function boleto(nomeAluno, responsavel) {
         const valorCobrado = prompt("digite o valor cobrado do boleto:")
@@ -29,8 +26,6 @@ export default function InformacoesAluno(props){
             <Paginacao/>   
             <p>informacoes do aluno: id={aluno_id}</p>
             <div>
-                {Array.isArray(aluno) && aluno.length >= 0 ? (
-                    aluno.map((alunos, index) => (
                         <div className='divInformacoes' key={index}>
                             <ul>
                                 <li><strong>Nome do aluno:</strong> {alunos.nome_aluno}</li>
@@ -48,12 +43,7 @@ export default function InformacoesAluno(props){
                             <button>Baixar declaração</button>
                             <button>Baixar transferencia</button>
                             <button onClick={() => boleto(alunos.nome_aluno, alunos.nome_mae)}>Baixar Boleto</button>
-                        </div>
-                    ))
-                    ):(
-                        <p>Informacoes nao validadas</p>
-                )}
-                    
+                        </div>                    
             </div>
         </div>
     )
