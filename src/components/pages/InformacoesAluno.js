@@ -42,7 +42,6 @@ export default function InformacoesAluno(props){
                             <button>Baixar transferencia</button>
                             <button onClick={() => boleto(alunos.nome_aluno, alunos.nome_mae)}>Baixar Boleto</button>
                         </div>                    
-            </div>
         </div>
     )
 }
