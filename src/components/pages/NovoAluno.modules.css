@@ -1,0 +1,19 @@
+  
+  .form {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    background-color: rgb(76, 43, 226);
+    color: aliceblue;
+  }
+  
