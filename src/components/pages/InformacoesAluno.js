@@ -16,17 +16,11 @@ export default function InformacoesAluno(props){
 
         function buscarInformacoesAluno() {
             const url = 'https://cypriot-overcoat.000webhostapp.com/backend/aluno_especifico.php';
-            const formData = new FormData();
-            formData.append('aluno_id', aluno_id);
-
-            axios.post(url, formData)
-                .then(response => {
-                    setAluno(response.data);
-                })
-                .catch(error => {
-                    setError(error);
-                });
-        }
+            fetch(url)
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(error => console.error('Erro:', error));
+                    }
 
         buscarInformacoesAluno();
     }, [aluno_id]);
