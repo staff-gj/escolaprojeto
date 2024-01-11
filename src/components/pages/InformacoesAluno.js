@@ -10,7 +10,7 @@ export default function InformacoesAluno(props){
         const location = useLocation();
         const alunos = location.state;
 
-        console.log(aluno);
+        console.log(alunos);
 
     function boleto(nomeAluno, responsavel) {
         const valorCobrado = prompt("digite o valor cobrado do boleto:")
