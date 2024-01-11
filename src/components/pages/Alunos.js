@@ -24,7 +24,7 @@ export default function Alunos(){
                         <h1>{alunos.nome_aluno}</h1>
                         <p>{alunos.periodo}</p>
                         <p>{alunos.serie_aluno}</p>
-                        <Link to={`/informacoes_aluno?id=${alunos.id}`}>Ver informações completas</Link>
+                        <Link to={`/informacoes_aluno?id=${alunos.id}`} state={alunos}>Ver informações completas</Link>
                         <button>Apagar Aluno</button>
                     </div>
                 ))
