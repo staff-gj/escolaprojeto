@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Paginacao from '../layout/Paginacao';
 import styles from './Alunos.modules.css'
 import { Link } from 'react-router-dom'
+import { useLocation } from 'react';
  
 export default function Alunos(){
     const [aluno, setAluno] = useState("")
