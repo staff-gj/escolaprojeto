@@ -3,27 +3,18 @@ import axios from 'axios'
 import Paginacao from '../layout/Paginacao'
 import styles from './InformacoesAluno.modules.css'
 import { BaixarBoleto } from './functions/BaixarBoleto'
+import { useLocation } from 'react';
 
 export default function InformacoesAluno(props){
     const [aluno, setAluno] = useState([])
     const [error, setError] = useState(null);
 
-    const urlParams = new URLSearchParams(window.location.search)
-    const aluno_id = urlParams.get("id")
+        const location = useLocation();
+        const aluno = location.state;
+
+        console.log(aluno);
     
-    useEffect(() => {
-        if (!aluno_id) return;
 
-        function buscarInformacoesAluno() {
-            const url = 'https://cypriot-overcoat.000webhostapp.com/backend/aluno_especifico.php';
-            fetch(url)
-                .then(response => response.json())
-                .then(data => console.log(data))
-                .catch(error => console.error('Erro:', error));
-                    }
-
-        buscarInformacoesAluno();
-    }, [aluno_id]);
 
     function boleto(nomeAluno, responsavel) {
         const valorCobrado = prompt("digite o valor cobrado do boleto:")
