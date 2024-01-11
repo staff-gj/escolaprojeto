@@ -40,8 +40,7 @@ export default function NovoAluno(){
         fData.append('email', email);
         fData.append('serie_aluno', serie_aluno);
 
-        axios.post(url, fData).then(response=> console.log(response.data)).catch(error=> alert(error));  
-        window.location = '/home'
+        axios.post(url, fData).then(response=> console.log(response.data)).catch(error=> alert(error));
     }
 
     return(
