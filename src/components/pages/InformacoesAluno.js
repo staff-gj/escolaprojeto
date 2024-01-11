@@ -21,6 +21,7 @@ export default function InformacoesAluno(props){
 
             axios.post(url, formData)
                 .then(response => {
+                    console.log(response.data);
                     setAluno(response.data);
                 })
                 .catch(error => {
