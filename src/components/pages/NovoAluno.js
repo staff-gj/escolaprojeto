@@ -25,7 +25,7 @@ export default function NovoAluno(){
         e.preventDefault()
         console.log(informacoes)
 
-        const url = 'http://backendteste.free.nf/cadastrar_aluno.php';
+        const url = 'https://cypriot-overcoat.000webhostapp.com/backend/cadastrar_aluno.php';
         let fData = new FormData();
   
         fData.append('periodo', periodo);
