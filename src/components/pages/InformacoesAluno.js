@@ -21,7 +21,7 @@ useEffect(() => {
 
     axios.post(url, formData)
       .then(response => {
-        console.log(response.data);
+        console.log(response.data + 'run');
         setAluno(response.data);
       })
       .catch(error => {
