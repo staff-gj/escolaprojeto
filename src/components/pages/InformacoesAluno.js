@@ -15,7 +15,7 @@ export default function InformacoesAluno(props){
         if (!aluno_id) return;
 
         function buscarInformacoesAluno() {
-            const url = 'http://localhost/escoladb/aluno_especifico.php';
+            const url = 'https://cypriot-overcoat.000webhostapp.com/backend/receber_dados.php';
             const formData = new FormData();
             formData.append('aluno_id', aluno_id);
 
