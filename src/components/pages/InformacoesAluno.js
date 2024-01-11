@@ -11,27 +11,25 @@ export default function InformacoesAluno(props){
     const urlParams = new URLSearchParams(window.location.search)
     const aluno_id = urlParams.get("id")
     
-function exibirdados(){
-  if (!aluno_id) return;
+    useEffect(() => {
+        if (!aluno_id) return;
 
-  function buscarInformacoesAluno() {
-    const url = 'https://cypriot-overcoat.000webhostapp.com/backend/aluno_especifico.php';
-    const formData = new FormData();
-    formData.append('aluno_id', aluno_id);
+        function buscarInformacoesAluno() {
+            const url = 'http://localhost/escoladb/aluno_especifico.php';
+            const formData = new FormData();
+            formData.append('aluno_id', aluno_id);
 
-    axios.post(url, formData)
-      .then(response => {
-        console.log(response.data);
-        setAluno(response.data);
-      })
-      .catch(error => {
-        setError(error);
-      });
-  }
+            axios.post(url, formData)
+                .then(response => {
+                    setAluno(response.data);
+                })
+                .catch(error => {
+                    setError(error);
+                });
+        }
 
-  buscarInformacoesAluno();
-}, [aluno_id]);
-    exibirdados()
+        buscarInformacoesAluno();
+    }, [aluno_id]);
 
     function boleto(nomeAluno, responsavel) {
         const valorCobrado = prompt("digite o valor cobrado do boleto:")
