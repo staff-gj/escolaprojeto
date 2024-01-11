@@ -6,7 +6,6 @@ import { BaixarBoleto } from './functions/BaixarBoleto'
 import { useLocation } from 'react';
 
 export default function InformacoesAluno(props){
-    const [aluno, setAluno] = useState([])
 
         const location = useLocation();
         const aluno = location.state;
