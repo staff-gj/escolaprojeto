@@ -3,6 +3,7 @@ import axios from 'axios'
 import Paginacao from '../layout/Paginacao'
 import styles from './InformacoesAluno.modules.css'
 import { BaixarBoleto } from './functions/BaixarBoleto'
+import { BaixarFichaMatricula } from './functions/BaixarFichaMatricula'
 import { useLocation } from 'react-router-dom';
 
 export default function InformacoesAluno(props){
