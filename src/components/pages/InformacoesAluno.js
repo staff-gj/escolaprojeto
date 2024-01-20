@@ -18,6 +18,9 @@ export default function InformacoesAluno(props){
         console.log('Nome do aluno:', nomeAluno);
         BaixarBoleto(nomeAluno, responsavel, valorCobrado);
     }
+        function fichaMatricula(nome_aluno ,periodo ,responsavel_buscar ,data_nascimento ,nome_pai ,nome_mae ,endereco ,cidade ,telefone ,email ,serie_aluno){
+        BaixarFichaMatricula(nome_aluno ,periodo ,responsavel_buscar ,data_nascimento ,nome_pai ,nome_mae ,endereco ,cidade ,telefone ,email ,serie_aluno)
+    }
     
 
     return(
@@ -40,6 +43,7 @@ export default function InformacoesAluno(props){
                             </ul>
                             <button>Baixar declaração</button>
                             <button>Baixar transferencia</button>
+                            <button onClick={() => fichaMatricula(alunos.nome_aluno ,alunos.periodo ,alunos.responsavel_buscar ,alunos.data_nascimento ,alunos.nome_pai ,alunos.nome_mae ,alunos.endereco ,alunos.cidade ,alunos.telefone ,alunos.email ,alunos.serie_aluno)}>Baixar Ficha de Matricula</button>
                             <button onClick={() => boleto(alunos.nome_aluno, alunos.nome_mae)}>Baixar Boleto</button>
                         </div>                    
         </div>
