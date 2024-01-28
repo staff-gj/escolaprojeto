@@ -8,7 +8,7 @@ export default function Home(){
         <div>
             <Paginacao/>
         <section className="home_container">
-            <h1>Adicione novos <span>alunoss</span> na sua empresa!</h1>
+            <h1>Adicione novos <span>alunos</span> na sua empresa!</h1>
             <Link className='btn' to={'/novoaluno'}>Novo aluno</Link>
             <img src={savings} alt="Savings" />
             </section>
