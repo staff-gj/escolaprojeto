@@ -6,6 +6,7 @@ import { BaixarBoleto } from './functions/BaixarBoleto'
 import { useLocation } from 'react-router-dom';
 import { BaixarFichaMatricula } from './functions/BaixarFichaMatricula'
 import { BaixarDeclaracao} from './functions/BaixarDeclaracao'
+import { BaixarTransferencia} from './functions/BaixarTransferencia'
 
 export default function InformacoesAluno(props){
 
@@ -31,7 +32,9 @@ export default function InformacoesAluno(props){
         const serie_seguinte = prompt("Digite a próxima série em que o aluno começará a estudar, seja no seu estabelecimento ou não:");
         BaixarDeclaracao(nome_aluno, data_nascimento, nome_pai, nome_mae, serie_aluno, data_inicial, data_final, serie_seguinte);
     }
-    
+    function transferencia(nome_aluno, data_nascimento, nome_pai, nome_mae, serie_aluno){
+        BaixarTransferencia(nome_aluno, data_nascimento, nome_pai, nome_mae, serie_aluno)
+    }
 
     return(
         <div>
@@ -52,7 +55,7 @@ export default function InformacoesAluno(props){
                                 <li><strong>Série do aluno:</strong> {alunos.serie_aluno}</li>
                             </ul>
                             <button onClick={() => declaracao(alunos.nome_aluno, alunos.data_nascimento, alunos.nome_pai, alunos.nome_mae, alunos.serie_aluno)}>Baixar declaração</button>
-                            <button>Baixar transferencia</button>
+                            <button onClick={() => transferencia(alunos.nome_aluno, alunos.data_nascimento, alunos.nome_pai, alunos.nome_mae, alunos.serie_aluno)}>Baixar transferencia</button>
                             <button onClick={() => fichaMatricula(alunos.nome_aluno ,alunos.periodo ,alunos.responsavel_buscar ,alunos.data_nascimento ,alunos.nome_pai ,alunos.nome_mae ,alunos.endereco ,alunos.cidade ,alunos.telefone ,alunos.email ,alunos.serie_aluno)}>Baixar Ficha de Matricula</button>
                             <button onClick={() => boleto(alunos.nome_aluno, alunos.nome_mae)}>Baixar Boleto</button>
                         </div>                    
