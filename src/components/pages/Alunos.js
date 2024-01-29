@@ -3,6 +3,7 @@ import Paginacao from '../layout/Paginacao';
 import styles from './Alunos.modules.css'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 
  
 export default function Alunos(){
@@ -15,6 +16,15 @@ export default function Alunos(){
                 console.log(data)
             })
     }, [])
+     function apagarAluno(id){
+        const url = 'https://cypriot-overcoat.000webhostapp.com/backend/apagar_aluno.php';
+        let fData = new FormData();
+
+        fData.append("id", id)
+        console.log("Id do aluno: ",id)
+
+        axios.post(url, fData).then(response=> console.log(response.data)).catch(error=> alert(error));  
+    }
     return(
         <div>
             <Paginacao/>
@@ -27,7 +37,7 @@ export default function Alunos(){
                         <p>{alunos.periodo}</p>
                         <p>{alunos.serie_aluno}</p>
                         <Link to={`/informacoes_aluno?id=${alunos.id}`} state={alunos}>Ver informações completas</Link>
-                        <button>Apagar Aluno</button>
+                        <button onClick={() => apagarAluno(alunos.id)}>Apagar Aluno</button>
                     </div>
                 ))
             ) : (
