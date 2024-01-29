@@ -24,7 +24,7 @@ export default function Alunos(){
         console.log("Id do aluno: ",id)
 
         axios.post(url, fData).then(response=> console.log(response.data)).catch(error=> alert(error));  
-      localtion = '/alunos'
+      localition = '/alunos'
     }
     return(
         <div>
