@@ -7,6 +7,11 @@ import { useLocation } from 'react-router-dom';
 import { BaixarFichaMatricula } from './functions/BaixarFichaMatricula'
 import { BaixarDeclaracao} from './functions/BaixarDeclaracao'
 import { BaixarTransferencia} from './functions/BaixarTransferencia'
+import BoletoForm from '../forms/BoletoForm'
+import DeclaracaoForm from '../forms/DeclaracaoForm'
+import { useRef } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBarcode, faFile, faArrowRightArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 export default function InformacoesAluno(props){
 
@@ -15,22 +20,23 @@ export default function InformacoesAluno(props){
 
         console.log(alunos);
 
-    function boleto(nomeAluno, responsavel) {
-        const valorCobrado = prompt("digite o valor cobrado do boleto:")
+        const divBoleto = useRef("") 
+        const divDeclaracao = useRef("") 
 
-        console.log('Nome do aluno:', nomeAluno);
-        BaixarBoleto(nomeAluno, responsavel, valorCobrado);
+    function boleto() {
+        const boletoBox = divBoleto.current.id
+
+        divBoleto.current.style.display = 'flex'
     }
 
     function fichaMatricula(nome_aluno ,periodo ,responsavel_buscar ,data_nascimento ,nome_pai ,nome_mae ,endereco ,cidade ,telefone ,email ,serie_aluno){
         
         BaixarFichaMatricula(nome_aluno ,periodo ,responsavel_buscar ,data_nascimento ,nome_pai ,nome_mae ,endereco ,cidade ,telefone ,email ,serie_aluno)
     }
-    function declaracao(nome_aluno, data_nascimento, nome_pai, nome_mae, serie_aluno) {
-        const data_inicial = prompt("Digite o ano e mês em que o Aluno começou a estudar no estabelecimento:");
-        const data_final = prompt("Digite o ano e mês em que o Aluno saiu do estabelecimento:");
-        const serie_seguinte = prompt("Digite a próxima série em que o aluno começará a estudar, seja no seu estabelecimento ou não:");
-        BaixarDeclaracao(nome_aluno, data_nascimento, nome_pai, nome_mae, serie_aluno, data_inicial, data_final, serie_seguinte);
+    function declaracao() {
+        const declaracaoBox = divDeclaracao.current.id
+
+        divDeclaracao.current.style.display = 'inline'
     }
     function transferencia(nome_aluno, data_nascimento, nome_pai, nome_mae, serie_aluno){
         BaixarTransferencia(nome_aluno, data_nascimento, nome_pai, nome_mae, serie_aluno)
@@ -38,10 +44,15 @@ export default function InformacoesAluno(props){
 
     return(
         <div>
-            <Paginacao/>   
-            <p>informacoes do aluno:</p>
+            <Paginacao/>   <br />
             <div>
-                            <ul>
+                <div className='divBoleto' ref={divBoleto}>
+                <BoletoForm className='boleto_box' displayValue={'flex'} nomeAluno={alunos.nome_aluno} responsavel={alunos.nome_mae}/>
+                </div>
+                <div className='divDeclaracao' ref={divDeclaracao}>
+                    <DeclaracaoForm className='declaracao_box' displayValue={'flex'}  nomeAluno={alunos.nome_aluno} data_nascimento={alunos.data_nascimento} nome_pai={alunos.nome_pai} nome_mae={alunos.nome_mae} serie_aluno={alunos.serie_aluno}/>
+                </div>
+                            <ul className='dados_alunos'>
                                 <li><strong>Nome do aluno:</strong> {alunos.nome_aluno}</li>
                                 <li><strong>Período:</strong> {alunos.periodo}</li>
                                 <li><strong>Responsável por buscar:</strong> {alunos.responsavel_buscar}</li>
@@ -54,10 +65,10 @@ export default function InformacoesAluno(props){
                                 <li><strong>Email:</strong> {alunos.email}</li>
                                 <li><strong>Série do aluno:</strong> {alunos.serie_aluno}</li>
                             </ul>
-                            <button onClick={() => declaracao(alunos.nome_aluno, alunos.data_nascimento, alunos.nome_pai, alunos.nome_mae, alunos.serie_aluno)}>Baixar declaração</button>
-                            <button onClick={() => transferencia(alunos.nome_aluno, alunos.data_nascimento, alunos.nome_pai, alunos.nome_mae, alunos.serie_aluno)}>Baixar transferencia</button>
-                            <button onClick={() => fichaMatricula(alunos.nome_aluno ,alunos.periodo ,alunos.responsavel_buscar ,alunos.data_nascimento ,alunos.nome_pai ,alunos.nome_mae ,alunos.endereco ,alunos.cidade ,alunos.telefone ,alunos.email ,alunos.serie_aluno)}>Baixar Ficha de Matricula</button>
-                            <button onClick={() => boleto(alunos.nome_aluno, alunos.nome_mae)}>Baixar Boleto</button>
+                            <button className='downloads' onClick={() => declaracao(alunos.nome_aluno, alunos.data_nascimento, alunos.nome_pai, alunos.nome_mae, alunos.serie_aluno)}><FontAwesomeIcon icon={faFile} />    Baixar declaração</button>
+                            <button className='downloads' onClick={() => transferencia(alunos.nome_aluno, alunos.data_nascimento, alunos.nome_pai, alunos.nome_mae, alunos.serie_aluno)}><FontAwesomeIcon icon={faArrowRightArrowLeft} />    Baixar transferencia</button>
+                            <button className='downloads' onClick={() => fichaMatricula(alunos.nome_aluno ,alunos.periodo ,alunos.responsavel_buscar ,alunos.data_nascimento ,alunos.nome_pai ,alunos.nome_mae ,alunos.endereco ,alunos.cidade ,alunos.telefone ,alunos.email ,alunos.serie_aluno)}><FontAwesomeIcon icon={faFile} />    Baixar Ficha de Matricula</button>
+                            <button className='downloads' onClick={() => boleto()}><FontAwesomeIcon icon={faBarcode} />     Baixar Boleto</button>
                         </div>                    
         </div>
     )
