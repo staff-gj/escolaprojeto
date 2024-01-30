@@ -1,3 +1,79 @@
 .divInformacoes{
     text-align: center;
 }
+
+.divBoleto{
+    display: none;
+}
+
+.divDeclaracao{
+    display: none;
+}
+/* estilizações das informações abaixo */
+
+.dados_alunos{
+    background-color: #f2f2f2; 
+    text-align: center;
+    width: 80%; 
+    max-width: 600px; 
+    margin: 0 auto;
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 8px;
+    list-style: none;
+}
+
+/* estilizações do botões abaixo */
+
+button{
+    background-color: #0000000c;
+    color: rgb(0, 0, 0);
+    border-color: #0000000c;
+}
+button:hover{
+    background-color: #000000a6;
+    color: rgb(255, 255, 255);
+    border-color: #0000000c;
+}
+
+
+/* estilizações de forms extras */
+
+.boleto_box{
+    background-color: #f2f2f2; 
+    text-align: center;
+    width: 80%; 
+    max-width: 600px; 
+    margin: 0 auto;
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 8px;
+}
+
+.baixar_boleto_form{
+    background-color: #0000000c;
+    color: rgb(0, 0, 0);
+    border-color: #0000000c;
+    padding: 5px 20px;
+}
+.baixar_boleto_form:hover{
+    background-color: #000000a6;
+    color: rgb(255, 255, 255);
+    border-color: #0000000c;
+}
+
+.downloads{
+    background-color: #007bff;
+    color: #fff; 
+    border: none; 
+    padding: 10px 20px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.downloads:hover{
+    background-color: #fff;
+    color: #007bff; 
+    transition: 0.5s;
+}
