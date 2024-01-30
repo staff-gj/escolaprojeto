@@ -1,6 +1,41 @@
-.informacoes_aluno{
-    background-color: rgba(209, 204, 204, 0.575);
+.informacoes_aluno {
+    background-color: #f2f2f2; /* Cinza claro */
     text-align: center;
-    width: 100%;
-    height: auto;
+    width: 80%; 
+    max-width: 600px; 
+    margin: 0 auto;
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 8px;
+}
+
+.botao_apagar_aluno{
+    background-color: #d9534f;
+    color: #fff; 
+    border: none; 
+    padding: 10px 10px;
+    border-radius: 5px; 
+    cursor: pointer;
+    text-decoration: none;
+}
+.botao_apagar_aluno:hover{
+    background-color: #fff;
+    color: #d9534f; 
+    transition: 0.4s;
+}
+
+.botao_ver_informacoes{
+    background-color: #007bff;
+    color: #fff; 
+    border: none; 
+    padding: 10px 20px;
+    border-radius: 5px; 
+    cursor: pointer;
+    text-decoration: none;
+}
+.botao_ver_informacoes:hover{
+    background-color: #fff;
+    color: #007bff; 
+    transition: 0.5s;
 }
