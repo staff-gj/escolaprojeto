@@ -5,11 +5,15 @@ import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faAddressCard } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faAddressCard, faSearch } from '@fortawesome/free-solid-svg-icons';
 
  
 export default function Alunos(){
     const [aluno, setAluno] = useState("")
+    const [pesquisarAluno, setPesquisarAluno] = useState("")
+    const [resultadoPesquisa, setResultadoPesquisa] = useState("")
+    const [exibirResultado, setExibirResultado] = useState("")
+
     useEffect(()=>{
         fetch("https://cypriot-overcoat.000webhostapp.com/backend/receber_dados.php")
             .then(response => response.json())
@@ -27,11 +31,39 @@ export default function Alunos(){
 
         axios.post(url, fData).then(response=> console.log(response.data)).catch(error=> alert(error));  
     }
+
+    function pesquisar(pesquisarAluno, query){
+        const resultado = aluno.find(aluno => aluno.nome_aluno === pesquisarAluno);
+        if (resultado) {
+            console.log(resultado);
+            setResultadoPesquisa(resultado);
+
+            setExibirResultado(
+              <div className='informacoes_aluno'>
+                <h1>{resultado.nome_aluno}</h1>
+                <p>{resultado.periodo}</p>
+                <p>{resultado.serie_aluno}</p><br />
+                <Link className='botao_ver_informacoes' to={`/informacoes_aluno?id=${resultado.id}`} state={resultado}>
+                  <FontAwesomeIcon icon={faAddressCard} /> Ver informações completas
+                </Link>
+                <button className='botao_apagar_aluno' onClick={() => apagarAluno(resultado.id)}>
+                  <FontAwesomeIcon icon={faTrash} /> Apagar Aluno
+                </button>
+              </div>
+            );
+          } else {
+            console.log("nenhum aluno correspondente");
+          }          
+    }
+    
     return(
         <div>
             <Paginacao/>
         <div>
             <h1>Alunos:</h1>
+            <input type="search" id="" placeholder='Pesquisar Aluno...' onChange={(e) => pesquisar(e.target.value)}/>
+            <div>{exibirResultado}</div>
+
             {aluno.length > 0 ?(
                 aluno.map((alunos, index)=>(
                     <div className='informacoes_aluno' key={index}>
