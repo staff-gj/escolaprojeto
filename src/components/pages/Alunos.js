@@ -33,24 +33,27 @@ export default function Alunos(){
     }
 
     function pesquisar(pesquisarAluno, query){
-        const resultado = aluno.find(aluno => aluno.nome_aluno === pesquisarAluno);
-        if (resultado) {
-            console.log(resultado);
-            setResultadoPesquisa(resultado);
+        const resultados = aluno.filter(aluno =>
+            aluno.nome_aluno.toLowerCase().includes(pesquisarAluno.toLowerCase())
+        );
+        if (resultados) {
+            console.log(resultados);
+            setResultadoPesquisa(resultados);
 
-            setExibirResultado(
-              <div className='informacoes_aluno'>
-                <h1>{resultado.nome_aluno}</h1>
-                <p>{resultado.periodo}</p>
-                <p>{resultado.serie_aluno}</p><br />
-                <Link className='botao_ver_informacoes' to={`/informacoes_aluno?id=${resultado.id}`} state={resultado}>
-                  <FontAwesomeIcon icon={faAddressCard} /> Ver informações completas
-                </Link>
-                <button className='botao_apagar_aluno' onClick={() => apagarAluno(resultado.id)}>
-                  <FontAwesomeIcon icon={faTrash} /> Apagar Aluno
-                </button>
-              </div>
-            );
+            const exibirResultados = resultados.map(resultado => (
+                <div className='informacoes_aluno' key={resultado.id}>
+                  <h1>{resultado.nome_aluno}</h1>
+                  <p>{resultado.periodo}</p>
+                  <p>{resultado.serie_aluno}</p><br />
+                  <Link className='botao_ver_informacoes' to={`/informacoes_aluno?id=${resultado.id}`} state={resultado}>
+                    <FontAwesomeIcon icon={faAddressCard} /> Ver informações completas
+                  </Link>
+                  <button className='botao_apagar_aluno' onClick={() => apagarAluno(resultado.id)}>
+                    <FontAwesomeIcon icon={faTrash} /> Apagar Aluno
+                  </button>
+                </div>
+              ));
+              setExibirResultado(exibirResultados);
           } else {
             console.log("nenhum aluno correspondente");
           }          
